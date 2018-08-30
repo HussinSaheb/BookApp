@@ -1,9 +1,10 @@
 <div class="row">
-  <h2>Book:</h2>
-  <h3><%= @book.title %> <%= @book.genre %></h3>
+
+  <p class="list-group-item"><strong>Book:</strong> <%= @book.title %></p>
+  <p class="list-group-item"><strong>Genre:</strong> <%= @book.genre %></p>
 </div>
 <div class="row">
-  <h2>Written by:</h2>
-  <h3><%= @author.firstName %> <%= @author.lastName %></h3>
-  <%=  button_to "delete", @book,method: :delete %>
+
+  <p class="list-group-item"><strong>Author:</strong> <%= @author.firstName %> <%= @author.lastName %></p>
+  <%=  button_to "delete", @book,method: :delete , class: 'btn btn-danger' %>
 </div>

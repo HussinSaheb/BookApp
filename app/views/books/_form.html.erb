@@ -1,9 +1,9 @@
-<%= form_for (@book) do |f| %>
+<%= form_for (@book), class: 'form-group' do |f| %>
   <%= f.label :title%>
-  <%= f.text_field :title, :value => @book.title  %>
+  <%= f.text_field :title, :value => @book.title , class: 'form-control'  %>
     <%= f.label :genre%>
-  <%= f.text_field :genre, :value => @book.genre %>
+  <%= f.text_field :genre, :value => @book.genre , class: 'form-control' %>
     <%= f.label :author_id%>
-  <%= f.collection_select :author_id, Author.order(:lastName), :id, :firstName %>
-   <%= f.submit "Save changes"%>
+  <%= f.collection_select :author_id, Author.order(:lastName), :id, :firstName, class: 'custom-select' %>
+   <%= f.submit "Save changes", class:'button btn-success'%>
 <% end %>

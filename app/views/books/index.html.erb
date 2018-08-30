@@ -1,14 +1,20 @@
 <% @books.each do |book| %>
-<div class="row books">
+<div class="row list-group-item">
   <div class="col-md-6">
-      <p><%= book.title %></p>
-      <p><%= book.genre %></p>
+    <div class="row">
+      <p>Title: <%= book.title %></p>
+    </div>
+    <div class="row">
+      <p>Genre: <%= book.genre %></p>
+    </div>
   </div>
   <div class="col-md-6">
-  <%= link_to 'edit', edit_book_path(book) %>
-  <%= link_to 'view', book_path(book) %>
+  <%= link_to 'edit', edit_book_path(book), class: 'btn btn-primary'  %>
+  <%= link_to 'view', book_path(book), class: 'btn btn-primary'  %>
   </div>
 
 </div>
 
 <% end %>
+
+<%= link_to 'New Book', new_book_url , class: 'btn btn-primary' %>

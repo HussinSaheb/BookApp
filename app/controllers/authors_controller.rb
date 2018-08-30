@@ -38,6 +38,7 @@ class AuthorsController < ApplicationController
     @author.destroy
     redirect_to authors_url
   end
+
   def user_params
     params.require(:author).permit(:firstName ,:lastName)
   end
