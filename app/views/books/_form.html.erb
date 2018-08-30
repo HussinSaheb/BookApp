@@ -1,0 +1,9 @@
+<%= form_for (@book) do |f| %>
+  <%= f.label :title%>
+  <%= f.text_field :title, :value => @book.title  %>
+    <%= f.label :genre%>
+  <%= f.text_field :genre, :value => @book.genre %>
+    <%= f.label :author_id%>
+  <%= f.collection_select :author_id, Author.order(:lastName), :id, :firstName %>
+   <%= f.submit "Save changes"%>
+<% end %>

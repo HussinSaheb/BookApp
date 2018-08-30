@@ -1,0 +1,17 @@
+<div class="row">
+  <h3><%= @author.firstName %> <%= @author.lastName %></h3>
+</div>
+
+<div class="col-md-12">
+  <% @books.each do |book| %>
+  <div class="row">
+    <h4><%= book.title %></h4>
+    <h4><%= book.genre %></h4>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <%=  button_to "delete", @author,method: :delete %>
+  </div>
+
+</div>

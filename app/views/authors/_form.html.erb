@@ -1,0 +1,7 @@
+<%= form_for (@author), {:class => 'inputforms'} do |f| %>
+  <%= f.label :firstName%>
+  <%= f.text_field :firstName, :value => @author.firstName  %>
+  <%= f.label :lastName  %>
+  <%= f.text_field :lastName, :value => @author.lastName %>
+   <%= f.submit "Save changes"%>
+<% end %>
