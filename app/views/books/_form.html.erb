@@ -3,7 +3,7 @@
   <%= f.text_field :title, :value => @book.title , class: 'form-control'  %>
     <%= f.label :genre%>
   <%= f.text_field :genre, :value => @book.genre , class: 'form-control' %>
-    <%= f.label :author_id%>
-  <%= f.collection_select :author_id, Author.order(:lastName), :id, :firstName, class: 'custom-select' %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
    <%= f.submit "Save changes", class:'button btn-success'%>
 <% end %>

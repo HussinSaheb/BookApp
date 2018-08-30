@@ -1,15 +1,20 @@
 class BooksController < ApplicationController
+    before_action :authenticate_user!
   def index
-    @books = Book.all
+    @books = current_user.books
   end
 
   def new
-    @book = Book.new
+    if user_signed_in?
+      @book = Book.new
+    end
+
   end
 
   def create
     # create a new user if the author global is coming from the new
       @book = Book.new(user_params)
+      @book.user = current_user
       if @book.save
         redirect_to @book
       else
@@ -19,7 +24,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @author = @book.author
   end
 
   def edit
@@ -33,13 +37,17 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    if is_admin?
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_url
+  else
+    redirect_to edit_book_url
+  end
   end
 
   def user_params
-    params.require(:book).permit(:title ,:genre, :author_id)
+    params.require(:book).permit(:title ,:genre, :user_id)
   end
 
 end

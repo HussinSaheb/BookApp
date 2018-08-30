@@ -5,6 +5,10 @@
 </div>
 <div class="row">
 
-  <p class="list-group-item"><strong>Author:</strong> <%= @author.firstName %> <%= @author.lastName %></p>
+  <p class="list-group-item"><strong>Author:</strong> <%= @book.user.email %></p>
+  <% if is_admin? %>
   <%=  button_to "delete", @book,method: :delete , class: 'btn btn-danger' %>
+  <% else %>
+  <%= link_to "Back", books_url, class: 'btn btn-primary' %>
+<% end %>
 </div>
