@@ -1,12 +1,15 @@
 class BooksController < ApplicationController
-    before_action :authenticate_user!
+rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   def index
-    @books = current_user.books
+    @books = Book.all
   end
 
   def new
     if user_signed_in?
       @book = Book.new
+    else
+      redirect_to new_user_session
     end
 
   end
@@ -14,6 +17,7 @@ class BooksController < ApplicationController
   def create
     # create a new user if the author global is coming from the new
       @book = Book.new(user_params)
+
       @book.user = current_user
       if @book.save
         redirect_to @book
@@ -37,13 +41,16 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    if is_admin?
     @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to books_url
-  else
-    redirect_to edit_book_url
+    authorize @book
+    if @book.destroy
+      redirect_to books_url
+    end
   end
+    
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to preform this action"
+     redirect_to books_url
   end
 
   def user_params
