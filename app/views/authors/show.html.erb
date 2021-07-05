@@ -1,0 +1,15 @@
+<div class="row list-group-item">
+  <h3>Author: <%= @author.firstName %> <%= @author.lastName %></h3>
+</div>
+
+
+  <% @books.each do |book| %>
+  <div class="row list-group-item">
+    <p >Title: <%= book.title %></p>
+    <p>Genre: <%= book.genre %></p>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <%=  button_to "delete", @author,method: :delete, class: 'btn btn-danger' %>
+  </div>

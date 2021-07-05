@@ -1,0 +1,12 @@
+<div class="row">
+
+  <p class="list-group-item"><strong>Book:</strong> <%= @book.title %></p>
+  <p class="list-group-item"><strong>Genre:</strong> <%= @book.genre %></p>
+</div>
+<div class="row">
+
+  <p class="list-group-item"><strong>Author:</strong> <%= @book.user.email %></p>
+  <%=  button_to "delete", @book,method: :delete , class: 'btn btn-danger' %>
+  <%= link_to "Back", books_url, class: 'btn btn-primary' %>
+
+</div>

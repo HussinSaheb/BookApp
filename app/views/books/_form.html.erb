@@ -1,0 +1,9 @@
+<%= form_for (@book), class: 'form-group' do |f| %>
+  <%= f.label :title%>
+  <%= f.text_field :title, :value => @book.title , class: 'form-control'  %>
+    <%= f.label :genre%>
+  <%= f.text_field :genre, :value => @book.genre , class: 'form-control' %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+   <%= f.submit "Save changes", class:'button btn-success'%>
+<% end %>
